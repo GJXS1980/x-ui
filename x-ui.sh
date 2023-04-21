@@ -107,7 +107,7 @@ before_show_menu() {
 }
 
 install() {
-    wget -N https://gitlab.com/rwkgyg/x-ui-yg/raw/main/install.sh && bash install.sh
+    wget -N https://raw.githubusercontent.com/GJXS1980/x-ui/main/install.sh && bash install.sh
     if [[ $? == 0 ]]; then
         if [[ $# == 0 ]]; then
             start
@@ -140,7 +140,7 @@ update() {
     systemctl stop x-ui
     cd /usr/local/
     if  [ $# == 0 ] ;then
-        wget -N --no-check-certificate -O /usr/local/x-ui-linux-${arch}.tar.gz https://gitlab.com/rwkgyg/x-ui-yg/raw/main/x-ui-linux-${arch}.tar.gz
+        wget -N --no-check-certificate -O /usr/local/x-ui-linux-${arch}.tar.gz https://raw.githubusercontent.com/GJXS1980/x-ui/main/x-ui-linux-${arch}.tar.gz
         if [[ $? -ne 0 ]]; then
             echo -e "${red}下载 x-ui 失败，请确保你的服务器能够下载 Github 的文件${plain}"
             rm -rf install.sh
@@ -148,7 +148,7 @@ update() {
         fi
     else
         last_version=$1
-        url="https://gitlab.com/rwkgyg/x-ui-yg/raw/main/x-ui-linux-${arch}.tar.gz"
+        url="https://raw.githubusercontent.com/GJXS1980/x-ui/main/x-ui-linux-${arch}.tar.gz"
         echo -e "开始安装 x-ui v$1"
         wget -N --no-check-certificate -O /usr/local/x-ui-linux-${arch}.tar.gz ${url}
         if [[ $? -ne 0 ]]; then
@@ -165,7 +165,7 @@ update() {
     cd x-ui
     chmod +x x-ui bin/xray-linux-${arch}
     cp -f x-ui.service /etc/systemd/system/
-    wget --no-check-certificate -O /usr/bin/x-ui https://gitlab.com/rwkgyg/x-ui-yg/raw/main/x-ui.sh
+    wget --no-check-certificate -O /usr/bin/x-ui https://raw.githubusercontent.com/GJXS1980/x-ui/main/x-ui.sh
     chmod +x /usr/bin/x-ui
     chmod +x /usr/local/x-ui/x-ui.sh
     systemctl daemon-reload
@@ -370,7 +370,7 @@ migrate_v2_ui() {
 }
 
 acme() {
-   wget -N https://gitlab.com/rwkgyg/acme-script/raw/main/acme.sh && chmod +x acme.sh && ./acme.sh
+   wget -N https://raw.githubusercontent.com/GJXS1980/acme-script/main/acme.sh && chmod +x acme.sh && ./acme.sh
     echo ""
     before_show_menu
 }
@@ -382,13 +382,13 @@ bash <(curl -L -s https://raw.githubusercontent.com/teddysun/across/master/bbr.s
 }
 
 cfwarp() {
-wget -N --no-check-certificate https://gitlab.com/rwkgyg/CFwarp/raw/main/CFwarp.sh && bash CFwarp.sh
+wget -N --no-check-certificate https://raw.githubusercontent.com/GJXS1980/CFwarp/main/CFwrp.sh && bash CFwarp.sh
     echo ""
     before_show_menu
 }
 
 update_shell() {
-    wget -O /usr/bin/x-ui -N --no-check-certificate https://gitlab.com/rwkgyg/x-ui-yg/raw/main/x-ui.sh
+    wget -O /usr/bin/x-ui -N --no-check-certificate https://raw.githubusercontent.com/GJXS1980/x-ui/main/x-ui.sh
     if [[ $? != 0 ]]; then
         echo ""
         echo -e "${red}下载脚本失败，请检查本机能否连接 Github${plain}"
@@ -549,7 +549,7 @@ show_menu() {
     fi
     echo "------------------------------------------"
     xuiygV="22.11.26 V 1.1"
-    remoteV=`wget -qO- https://gitlab.com/rwkgyg/x-ui-yg/raw/main/install.sh | sed  -n 2p | cut -d '"' -f 2`
+    remoteV=`wget -qO- https://raw.githubusercontent.com/GJXS1980/x-ui/main/install.sh | sed  -n 2p | cut -d '"' -f 2`
     localV=${xuiygV}
     if [ "${localV}" = "${remoteV}" ]; then
     green "已安装最新版本：${xuiygV} ，如有更新，此处会自动提示"
